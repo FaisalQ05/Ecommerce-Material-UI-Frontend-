@@ -9,7 +9,7 @@ import { removeFromCart, decreaseItemQuantity, increaseItemQuantity } from '../.
 
 const CartItem = (props) => {
     const { id, name, src, price, off, qty } = props
-    console.log("cart : ",props)
+    console.log("cart : ", props)
     const dispatch = useDispatch()
 
     let actualPrice = price
@@ -45,11 +45,11 @@ const CartItem = (props) => {
                         <Stack>
                             <CartItemTitle>{name}</CartItemTitle>
                             <CartPriceSection>
-                                <Stack flexDirection={'row'} gap={2} alignItems='center'>
-                                    <CartItemPrice>Price : Rs.<Box component={'span'} sx={{ textDecoration: 'line-through' }}>{actualPrice}</Box></CartItemPrice>
+                                <Stack flexDirection={'row'} gap={off > 0 ? 2 : 1} alignItems='center'>
+                                    <CartItemPrice>Price : Rs.{off > 0 && <Box component={'span'} sx={{ textDecoration: 'line-through' }}>{actualPrice}</Box>}</CartItemPrice>
                                     <CartItemPrice>{price}</CartItemPrice>
                                 </Stack>
-                                <CartDiscountText>{off}% discount</CartDiscountText>
+                                {off > 0 && <CartDiscountText>{off}% discount</CartDiscountText>}
                             </CartPriceSection>
                         </Stack>
                         <CartBottomSection>
@@ -61,7 +61,7 @@ const CartItem = (props) => {
                             <CartItemPrice fontWeight={'bold'}>Total : {price * qty}</CartItemPrice>
                         </CartBottomSection>
                     </CartItemMeta>
-                    <CartCloseIconButton onClick={()=>handleCloseIcon(id)}>
+                    <CartCloseIconButton onClick={() => handleCloseIcon(id)}>
                         <CloseIcon />
                     </CartCloseIconButton>
                 </CartBoxDetailSection>

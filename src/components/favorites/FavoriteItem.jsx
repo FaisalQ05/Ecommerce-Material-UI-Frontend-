@@ -27,11 +27,11 @@ const FavoriteItem = (props) => {
         <MetaContainer>
           <FavItemTitle>{name}</FavItemTitle>
           <PriceSection>
-            <Stack flexDirection={'row'} gap={2}>
-              <FavItemPrice>Price : Rs.<Box component={'span'} sx={{ textDecoration: 'line-through' }}>{actualPrice}</Box></FavItemPrice>
+            <Stack flexDirection={'row'} gap={off > 0 ? 2 : 1}>
+              <FavItemPrice>Price : Rs.{off > 0 && <Box component={'span'} sx={{ textDecoration: 'line-through' }}>{actualPrice}</Box>}</FavItemPrice>
               <FavItemPrice>{price}</FavItemPrice>
             </Stack>
-            <FavItemDiscountText>{off}% Discount</FavItemDiscountText>
+            {off > 0 && <FavItemDiscountText>{off}% Discount</FavItemDiscountText>}
           </PriceSection>
         </MetaContainer>
         <CloseIconButton onClick={() => handleCloseIcon(id)}><CloseIcon /></CloseIconButton>
