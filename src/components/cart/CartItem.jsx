@@ -9,16 +9,15 @@ import { removeFromCart, decreaseItemQuantity, increaseItemQuantity } from '../.
 
 const CartItem = (props) => {
     const { id, name, src, price, off, qty } = props
-    console.log("cart : ", props)
+    // console.log("cart : ", props)
     const dispatch = useDispatch()
 
     let actualPrice = price
+    // console.log("actualPrice : ",actualPrice)
     if (off > 0) {
-        actualPrice = (off * price) / 100 + Number(price)
+        actualPrice = Number(price) - (off * price) / 100  
     }
-    console.log(actualPrice)
-
-
+    // console.log(actualPrice)
 
     const handleDecrementIconClick = () => {
         dispatch(decreaseItemQuantity({ id }))
@@ -46,8 +45,8 @@ const CartItem = (props) => {
                             <CartItemTitle>{name}</CartItemTitle>
                             <CartPriceSection>
                                 <Stack flexDirection={'row'} gap={off > 0 ? 2 : 1} alignItems='center'>
-                                    <CartItemPrice>Price : Rs.{off > 0 && <Box component={'span'} sx={{ textDecoration: 'line-through' }}>{actualPrice}</Box>}</CartItemPrice>
-                                    <CartItemPrice>{price}</CartItemPrice>
+                                    <CartItemPrice>Price : Rs.{off > 0 && <Box component={'span'} sx={{ textDecoration: 'line-through' }}>{price}</Box>}</CartItemPrice>
+                                    <CartItemPrice>{actualPrice}</CartItemPrice>
                                 </Stack>
                                 {off > 0 && <CartDiscountText>{off}% discount</CartDiscountText>}
                             </CartPriceSection>
@@ -58,7 +57,7 @@ const CartItem = (props) => {
                                 <Typography padding={1}>{qty}</Typography>
                                 <CartIconButton onClick={handleIncrementIconClick}><IncrementIcon /></CartIconButton>
                             </CartItemQuantityBox>
-                            <CartItemPrice fontWeight={'bold'}>Total : {price * qty}</CartItemPrice>
+                            <CartItemPrice fontWeight={'bold'}>Total : {actualPrice * qty}</CartItemPrice>
                         </CartBottomSection>
                     </CartItemMeta>
                     <CartCloseIconButton onClick={() => handleCloseIcon(id)}>

@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from "react";
 
 const useDialogModal = (Component) => {
-  console.log("use dailog model")
   const [open, setOpen] = useState(false);
 
   const openDialog = useCallback(() => {
@@ -14,7 +13,6 @@ const useDialogModal = (Component) => {
 
 
   const DialogComponent = useCallback(({ ...props }) => {
-    console.log("Dailog comp")
     if (!open) return null;
     if (Component) {
       return (

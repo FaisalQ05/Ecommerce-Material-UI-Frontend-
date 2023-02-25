@@ -47,10 +47,14 @@ const ProductDetailDialog = (props) => {
     }
 
     let actualPrice = price
+    console.log(actualPrice)
+    console.log(off)
     if (off > 0) {
-        actualPrice = (off * price) / 100 + Number(price)
+        actualPrice = Number(price) - (off * price) / 100
     }
 
+    console.log(actualPrice)
+    console.log(price)
 
     let fav = false
     favItems.some(item => {
@@ -88,10 +92,9 @@ const ProductDetailDialog = (props) => {
                             <ProductDetailText>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Errr laboriosam architecto, numquam doloremque officiis nesciunt voluptatem, magnam ut maiores, nihil eaque ipsum!</ProductDetailText>
                             <PriceTextBox>
                                 {off > 0 ?
-                                    <Typography sx={{ color: 'text.default' }}>Price : <Box component="span" sx={{ textDecoration: 'line-through' }}>{actualPrice}</Box></Typography> :
+                                    <Typography sx={{ color: 'text.default' }}>Price : <Box component="span" sx={{ textDecoration: 'line-through' }}>{price}</Box></Typography> :
                                     <Typography>Price : {price}</Typography>}
-                                {off > 0 && <Typography> {price}</Typography>}
-
+                                {off > 0 && <Typography> {actualPrice}</Typography>}
                             </PriceTextBox>
                             {CartButton}
                             <FlexRowCenter>

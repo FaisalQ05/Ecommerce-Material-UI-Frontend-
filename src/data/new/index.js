@@ -17,7 +17,7 @@ const newArrivals = [
         id: 19,
         name: 'Limited Edition',
         src: '/images/new/limitededition.png',
-        price: '7799',
+        price: '8000',
         off: 10
     },
     {

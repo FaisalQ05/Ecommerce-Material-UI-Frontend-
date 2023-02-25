@@ -9,9 +9,6 @@ const Cart = () => {
 
   const cartItems = useSelector(state => state.cart)
   const [TotalPrice, TotalItems] = useCart()
-  console.log(TotalPrice)
-
-  console.log(cartItems)
   if (!(cartItems.length > 0)) {
     return <CartContainer>
       <EmptyCartText>No Product in cart</EmptyCartText>

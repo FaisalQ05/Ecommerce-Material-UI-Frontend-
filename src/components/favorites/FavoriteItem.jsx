@@ -10,7 +10,7 @@ const FavoriteItem = (props) => {
   const { id, name, off, price, src } = props
   let actualPrice = price
   if (off > 0) {
-    actualPrice = (off * price) / 100 + Number(price)
+    actualPrice = Number(price) - (off * price) / 100
   }
 
   const handleCloseIcon = (id) => {
@@ -28,8 +28,8 @@ const FavoriteItem = (props) => {
           <FavItemTitle>{name}</FavItemTitle>
           <PriceSection>
             <Stack flexDirection={'row'} gap={off > 0 ? 2 : 1}>
-              <FavItemPrice>Price : Rs.{off > 0 && <Box component={'span'} sx={{ textDecoration: 'line-through' }}>{actualPrice}</Box>}</FavItemPrice>
-              <FavItemPrice>{price}</FavItemPrice>
+              <FavItemPrice>Price : Rs.{off > 0 && <Box component={'span'} sx={{ textDecoration: 'line-through' }}>{price}</Box>}</FavItemPrice>
+              <FavItemPrice>{actualPrice}</FavItemPrice>
             </Stack>
             {off > 0 && <FavItemDiscountText>{off}% Discount</FavItemDiscountText>}
           </PriceSection>

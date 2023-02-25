@@ -17,7 +17,7 @@ const allProducts = [
         id: 3,
         name: 'Customized',
         src: '/images/flashdeals/customized.png',
-        price: 4599,
+        price: 5000,
         off: 15,
     },
     {

@@ -13,6 +13,11 @@ const ProdcutDesktop = (props) => {
   // console.log(show)
   const onMouseHover = () => setShow(true)
   const onMouseLeave = () => setShow(false)
+
+  let actualPrice=price;
+  if (off > 0) {
+    actualPrice = Number(price) - (off * price) / 100
+  }
   return (
     <>
       <Card onMouseEnter={onMouseHover} onMouseLeave={onMouseLeave}>
@@ -21,7 +26,7 @@ const ProdcutDesktop = (props) => {
         </CardImageContainer>
         <BottomWrapper>
           <Typography color={'text.default'}>{name}</Typography>
-          <Typography color={'text.default'}>Rs. {price}</Typography>
+          <Typography color={'text.default'}>Rs. {actualPrice}</Typography>
           <ViewButton onClick={showProductDetailDailog} show={show} variant='contained'>View</ViewButton>
         </BottomWrapper>
       </Card>

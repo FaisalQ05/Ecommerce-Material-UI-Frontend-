@@ -62,6 +62,12 @@ const ProductCard = (props) => {
         CartItemButton = <CartButton onClick={() => handleRemoveButton({ ...props })}><RemoveIcon /></CartButton>
     }
 
+
+    let actualPrice = price
+    if (off > 0) {
+        actualPrice = Number(price) - (off * price) / 100
+    }
+
     return (
         <>
             <Card onMouseEnter={onMouseHover} onMouseLeave={onMouseLeave}>
@@ -77,11 +83,11 @@ const ProductCard = (props) => {
                     <BottomWrapper>
                         <CardTitle>{name}</CardTitle>
                         <Stack flexDirection={'row'} justifyContent={'space-between'} alignItems={'center'}>
-                            <CardPrice>Rs. {price}</CardPrice>
+                            <CardPrice>Rs. {actualPrice}</CardPrice>
                             {CartItemButton}
                         </Stack>
                     </BottomWrapper>
-                    {off > 0  && <DiscountOffText>{off}% off</DiscountOffText>}
+                    {off > 0 && <DiscountOffText>{off}% off</DiscountOffText>}
                 </Box>
             </Card>
             {/* dailog component for view product */}
