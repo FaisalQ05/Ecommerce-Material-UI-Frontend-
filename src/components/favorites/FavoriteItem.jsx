@@ -14,7 +14,6 @@ const FavoriteItem = (props) => {
   }
 
   const handleCloseIcon = (id) => {
-    console.log("Close : ", id)
     dispatch(removeFromFav({ id }))
   }
 

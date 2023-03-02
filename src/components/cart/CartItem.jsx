@@ -28,8 +28,6 @@ const CartItem = (props) => {
     }
 
     const handleCloseIcon = (id) => {
-        console.log("close")
-        console.log(id)
         dispatch(removeFromCart({ id }))
     }
 

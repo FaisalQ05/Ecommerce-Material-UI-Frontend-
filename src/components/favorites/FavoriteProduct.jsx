@@ -7,7 +7,6 @@ import FavoriteItem from './FavoriteItem'
 
 const FavoriteProduct = () => {
   const favItems = useSelector(state => state.fav)
-  console.log(favItems)
   if (!favItems.length) {
     return <FavContainer>
       <FavContainerEmptyText>Empty</FavContainerEmptyText>

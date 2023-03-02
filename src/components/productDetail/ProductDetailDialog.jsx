@@ -47,14 +47,10 @@ const ProductDetailDialog = (props) => {
     }
 
     let actualPrice = price
-    console.log(actualPrice)
-    console.log(off)
     if (off > 0) {
         actualPrice = Number(price) - (off * price) / 100
     }
 
-    console.log(actualPrice)
-    console.log(price)
 
     let fav = false
     favItems.some(item => {
